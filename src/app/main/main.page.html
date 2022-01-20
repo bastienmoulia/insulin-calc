@@ -34,12 +34,14 @@
           ></ion-input>
           <ion-button id="meal-button">Repas</ion-button>
         </ion-item>
-        <ion-text color="primary" *ngIf="bolus >= 0">
-          <h1>
-            {{ bolus | number: '1.0-' + storage.insulinUnitsAccuracy }} unités
-          </h1>
-        </ion-text>
       </ion-card-content>
+
+      <ion-card-header color="primary" *ngIf="bolus >= 0">
+        <ion-card-title
+          >{{ bolus | number: '1.0-' + storage.insulinUnitsAccuracy }}
+          unités</ion-card-title
+        >
+      </ion-card-header>
     </ion-card>
 
     <ion-card>
@@ -72,27 +74,23 @@
             type="number"
           ></ion-input>
         </ion-item>
-        <ion-text color="success" *ngIf="correction >= 0">
-          <h1>
-            {{ correction | number: '1.0-' + storage.insulinUnitsAccuracy }}
-            unités
-          </h1>
-        </ion-text>
       </ion-card-content>
+      <ion-card-header color="success" *ngIf="correction >= 0">
+        <ion-card-title
+          >{{ correction | number: '1.0-' + storage.insulinUnitsAccuracy }}
+          unités</ion-card-title
+        >
+      </ion-card-header>
     </ion-card>
 
     <ion-card *ngIf="total >= 0">
       <ion-card-header color="danger">
         <ion-card-title>Total</ion-card-title>
+        <ion-card-title
+          >{{ total | number: '1.0-' + storage.insulinUnitsAccuracy }}
+          unités</ion-card-title
+        >
       </ion-card-header>
-
-      <ion-card-content>
-        <ion-text color="danger">
-          <h1>
-            {{ total | number: '1.0-' + storage.insulinUnitsAccuracy }} unités
-          </h1>
-        </ion-text>
-      </ion-card-content>
     </ion-card>
   </div>
 </ion-content>
@@ -103,10 +101,11 @@
       <ion-list>
         <ion-item
           button="true"
+          detail="false"
           *ngFor="let meal of storage.meals; let i = index"
           (click)="selectMeal(meal)"
         >
-          <ion-label> {{ meal.name }} ({{ meal.coef }}) </ion-label>
+          <ion-label> {{ meal.name }} ({{ meal.coef }})</ion-label>
         </ion-item>
         <ion-list-header>
           <ion-button (click)="openSettings()">Changer les repas</ion-button>

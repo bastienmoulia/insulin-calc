@@ -32,7 +32,7 @@
   <hr />
   <ion-grid>
     <ion-row *ngFor="let meal of storage.meals; let index = index">
-      <ion-col>
+      <ion-col size="10" size-md="5">
         <ion-item>
           <ion-label position="floating">Nom du repas</ion-label>
           <ion-input
@@ -41,7 +41,7 @@
           ></ion-input>
         </ion-item>
       </ion-col>
-      <ion-col>
+      <ion-col size="10" size-md="5">
         <ion-item>
           <ion-label position="floating">Coefficient du repas</ion-label>
           <ion-input
@@ -51,7 +51,7 @@
           ></ion-input>
         </ion-item>
       </ion-col>
-      <ion-col size="auto">
+      <ion-col size="2" size-md="2">
         <ion-button fill="clear" color="danger" (click)="deleteMeal(index)">
           <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
         </ion-button>
