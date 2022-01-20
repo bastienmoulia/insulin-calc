@@ -111,6 +111,67 @@ const ellipsisHorizontal = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.or
 
 
 
+/***/ }),
+
+/***/ 2798:
+/*!*************************************************!*\
+  !*** ./src/app/core/storage/storage.service.ts ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "StorageService": () => (/* binding */ StorageService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 8806);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 4001);
+/* harmony import */ var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/storage-angular */ 7897);
+
+
+
+const bloodGlucoseUnitsDefault = 'mgdl';
+const insulinUnitsAccuracyDefault = '1';
+const mealsDefault = [];
+let StorageService = class StorageService {
+    constructor(storage) {
+        this.storage = storage;
+        this.bloodGlucoseUnits = bloodGlucoseUnitsDefault;
+        this.insulinUnitsAccuracy = insulinUnitsAccuracyDefault;
+        this.meals = mealsDefault;
+        this.init();
+    }
+    init() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__awaiter)(this, void 0, void 0, function* () {
+            yield this.storage.create();
+            this.sensitivityIndex = yield this.storage.get('sensitivityIndex');
+            this.storage.get('bloodGlucoseUnits').then((bloodGlucoseUnits) => {
+                this.bloodGlucoseUnits = bloodGlucoseUnits || bloodGlucoseUnitsDefault;
+            });
+            this.storage.get('insulinUnitsAccuracy').then((insulinUnitsAccuracy) => {
+                this.insulinUnitsAccuracy =
+                    insulinUnitsAccuracy || insulinUnitsAccuracyDefault;
+            });
+            this.storage.get('meals').then((meals) => {
+                this.meals = meals || mealsDefault;
+            });
+        });
+    }
+    set(key, value) {
+        var _a;
+        (_a = this.storage) === null || _a === void 0 ? void 0 : _a.set(key, value);
+    }
+};
+StorageService.ctorParameters = () => [
+    { type: _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_1__.Storage }
+];
+StorageService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable)({
+        providedIn: 'root',
+    })
+], StorageService);
+
+
+
 /***/ })
 
 }]);
