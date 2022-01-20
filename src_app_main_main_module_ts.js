@@ -1,20 +1,20 @@
 "use strict";
-(self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_folder_folder_module_ts"],{
+(self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_main_main_module_ts"],{
 
-/***/ 4247:
-/*!*************************************************!*\
-  !*** ./src/app/folder/folder-routing.module.ts ***!
-  \*************************************************/
+/***/ 5471:
+/*!*********************************************!*\
+  !*** ./src/app/main/main-routing.module.ts ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FolderPageRoutingModule": () => (/* binding */ FolderPageRoutingModule)
+/* harmony export */   "MainPageRoutingModule": () => (/* binding */ MainPageRoutingModule)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 8806);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 4001);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 3252);
-/* harmony import */ var _folder_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./folder.page */ 5534);
+/* harmony import */ var _main_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main.page */ 8937);
 
 
 
@@ -22,39 +22,39 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: '',
-        component: _folder_page__WEBPACK_IMPORTED_MODULE_0__.FolderPage
+        component: _main_page__WEBPACK_IMPORTED_MODULE_0__.MainPage
     }
 ];
-let FolderPageRoutingModule = class FolderPageRoutingModule {
+let MainPageRoutingModule = class MainPageRoutingModule {
 };
-FolderPageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
+MainPageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
     (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.NgModule)({
         imports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterModule.forChild(routes)],
         exports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterModule],
     })
-], FolderPageRoutingModule);
+], MainPageRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 810:
-/*!*****************************************!*\
-  !*** ./src/app/folder/folder.module.ts ***!
-  \*****************************************/
+/***/ 4261:
+/*!*************************************!*\
+  !*** ./src/app/main/main.module.ts ***!
+  \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FolderPageModule": () => (/* binding */ FolderPageModule)
+/* harmony export */   "MainPageModule": () => (/* binding */ MainPageModule)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 8806);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 4001);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 8267);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 8346);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 8099);
-/* harmony import */ var _folder_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./folder-routing.module */ 4247);
-/* harmony import */ var _folder_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./folder.page */ 5534);
+/* harmony import */ var _main_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main-routing.module */ 5471);
+/* harmony import */ var _main_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./main.page */ 8937);
 
 
 
@@ -62,44 +62,44 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let FolderPageModule = class FolderPageModule {
+let MainPageModule = class MainPageModule {
 };
-FolderPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+MainPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
     (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.NgModule)({
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_4__.CommonModule,
             _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule,
             _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule,
-            _folder_routing_module__WEBPACK_IMPORTED_MODULE_0__.FolderPageRoutingModule
+            _main_routing_module__WEBPACK_IMPORTED_MODULE_0__.MainPageRoutingModule
         ],
-        declarations: [_folder_page__WEBPACK_IMPORTED_MODULE_1__.FolderPage]
+        declarations: [_main_page__WEBPACK_IMPORTED_MODULE_1__.MainPage]
     })
-], FolderPageModule);
+], MainPageModule);
 
 
 
 /***/ }),
 
-/***/ 5534:
-/*!***************************************!*\
-  !*** ./src/app/folder/folder.page.ts ***!
-  \***************************************/
+/***/ 8937:
+/*!***********************************!*\
+  !*** ./src/app/main/main.page.ts ***!
+  \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FolderPage": () => (/* binding */ FolderPage)
+/* harmony export */   "MainPage": () => (/* binding */ MainPage)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 8806);
-/* harmony import */ var _home_runner_work_insulin_calc_insulin_calc_node_modules_ngtools_webpack_src_loaders_direct_resource_js_folder_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !./node_modules/@ngtools/webpack/src/loaders/direct-resource.js!./folder.page.html */ 2607);
-/* harmony import */ var _folder_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./folder.page.scss */ 2045);
+/* harmony import */ var _home_runner_work_insulin_calc_insulin_calc_node_modules_ngtools_webpack_src_loaders_direct_resource_js_main_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !./node_modules/@ngtools/webpack/src/loaders/direct-resource.js!./main.page.html */ 328);
+/* harmony import */ var _main_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./main.page.scss */ 7379);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 4001);
 
 
 
 
 const bloodSugarTarget = 120;
-let FolderPage = class FolderPage {
+let MainPage = class MainPage {
     constructor() {
     }
     ngOnInit() {
@@ -144,23 +144,23 @@ let FolderPage = class FolderPage {
         }
     }
 };
-FolderPage.ctorParameters = () => [];
-FolderPage = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+MainPage.ctorParameters = () => [];
+MainPage = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
     (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
-        selector: 'app-folder',
-        template: _home_runner_work_insulin_calc_insulin_calc_node_modules_ngtools_webpack_src_loaders_direct_resource_js_folder_page_html__WEBPACK_IMPORTED_MODULE_0__["default"],
-        styles: [_folder_page_scss__WEBPACK_IMPORTED_MODULE_1__]
+        selector: 'app-main',
+        template: _home_runner_work_insulin_calc_insulin_calc_node_modules_ngtools_webpack_src_loaders_direct_resource_js_main_page_html__WEBPACK_IMPORTED_MODULE_0__["default"],
+        styles: [_main_page_scss__WEBPACK_IMPORTED_MODULE_1__]
     })
-], FolderPage);
+], MainPage);
 
 
 
 /***/ }),
 
-/***/ 2607:
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/@ngtools/webpack/src/loaders/direct-resource.js!./src/app/folder/folder.page.html ***!
-  \********************************************************************************************************/
+/***/ 328:
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/@ngtools/webpack/src/loaders/direct-resource.js!./src/app/main/main.page.html ***!
+  \****************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -171,15 +171,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 2045:
-/*!*****************************************!*\
-  !*** ./src/app/folder/folder.page.scss ***!
-  \*****************************************/
+/***/ 7379:
+/*!*************************************!*\
+  !*** ./src/app/main/main.page.scss ***!
+  \*************************************/
 /***/ ((module) => {
 
-module.exports = "#container {\n  text-align: center;\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.card-content-md h1 {\n  margin-top: 16px;\n  font-size: 3em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZvbGRlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxrQkFBQTtFQUNBLGtCQUFBO0VBQ0EsT0FBQTtFQUNBLFFBQUE7RUFDQSxRQUFBO0VBQ0EsMkJBQUE7QUFDRjs7QUFFQTtFQUNFLGdCQUFBO0VBQ0EsY0FBQTtBQUNGIiwiZmlsZSI6ImZvbGRlci5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjY29udGFpbmVyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xuICB0b3A6IDUwJTtcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKC01MCUpO1xufVxuXG4uY2FyZC1jb250ZW50LW1kIGgxIHtcbiAgbWFyZ2luLXRvcDogMTZweDtcbiAgZm9udC1zaXplOiAzZW07XG59XG4iXX0= */";
+module.exports = "#container {\n  text-align: center;\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.card-content-md h1 {\n  margin-top: 16px;\n  font-size: 3em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQUE7RUFDQSxrQkFBQTtFQUNBLE9BQUE7RUFDQSxRQUFBO0VBQ0EsUUFBQTtFQUNBLDJCQUFBO0FBQ0Y7O0FBRUE7RUFDRSxnQkFBQTtFQUNBLGNBQUE7QUFDRiIsImZpbGUiOiJtYWluLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjb250YWluZXIge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgbGVmdDogMDtcbiAgcmlnaHQ6IDA7XG4gIHRvcDogNTAlO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoLTUwJSk7XG59XG5cbi5jYXJkLWNvbnRlbnQtbWQgaDEge1xuICBtYXJnaW4tdG9wOiAxNnB4O1xuICBmb250LXNpemU6IDNlbTtcbn1cbiJdfQ== */";
 
 /***/ })
 
 }]);
-//# sourceMappingURL=src_app_folder_folder_module_ts.js.map
+//# sourceMappingURL=src_app_main_main_module_ts.js.map

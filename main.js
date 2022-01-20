@@ -20,13 +20,8 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: '',
-        redirectTo: 'folder/Inbox',
-        pathMatch: 'full'
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_main_main_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./main/main.module */ 4261)).then(m => m.MainPageModule)
     },
-    {
-        path: 'folder/:id',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_folder_folder_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./folder/folder.module */ 810)).then(m => m.FolderPageModule)
-    }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -63,17 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AppComponent = class AppComponent {
-    constructor() {
-        this.appPages = [
-            { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-            { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-            { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-            { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-            { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-            { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
-        ];
-        this.labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-    }
+    constructor() { }
 };
 AppComponent.ctorParameters = () => [];
 AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
