@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Réglages</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label>Unités de glycémie</ion-label>
+    <ion-select
+      [(ngModel)]="storage.bloodGlucoseUnits"
+      (ngModelChange)="bloodGlucoseUnitsChange()"
+    >
+      <ion-select-option value="mgdl">mg/dL</ion-select-option>
+      <ion-select-option value="gl">g/L</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item class="ion-margin-top">
+    <ion-label>Précision des unités d'insuline</ion-label>
+    <ion-select
+      [(ngModel)]="storage.insulinUnitsAccuracy"
+      (ngModelChange)="insulinUnitsAccuracyChange()"
+    >
+      <ion-select-option value="0">1</ion-select-option>
+      <ion-select-option value="1">0.1</ion-select-option>
+      <ion-select-option value="2">0.01</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <hr />
+  <ion-grid>
+    <ion-row *ngFor="let meal of storage.meals; let index = index">
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Nom du repas</ion-label>
+          <ion-input
+            [(ngModel)]="meal.name"
+            (ngModelChange)="saveMeals()"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Coefficient du repas</ion-label>
+          <ion-input
+            [(ngModel)]="meal.coef"
+            (ngModelChange)="saveMeals()"
+            type="number"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="auto">
+        <ion-button fill="clear" color="danger" (click)="deleteMeal(index)">
+          <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-button (click)="addMeal()">Ajouter un repas</ion-button>
+</ion-content>

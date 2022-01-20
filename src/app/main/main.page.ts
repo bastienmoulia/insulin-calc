@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Storage } from '@ionic/storage-angular';
-
-const bloodSugarTarget = 120;
-
-interface Meal {
-  name: string;
-  coef: number;
-}
+import { Router } from '@angular/router';
+import { Meal, StorageService } from '../core/storage/storage.service';
 
 @Component({
   selector: 'app-main',
@@ -18,28 +12,16 @@ export class MainPage implements OnInit {
   public carbohydrates: number;
   public bolus: number;
   public bloodSugar: number;
-  public sensitivityIndex: number;
   public correction: number;
   public total: number;
-  public meals: Meal[] = [];
 
-  constructor(private storage: Storage) {
-    this.meals = [
-      { name: 'Petit dejeuner', coef: 1 },
-      { name: 'Dejeuner', coef: 2 },
-      { name: 'Gouter', coef: 3 },
-      { name: 'Diner', coef: 4 },
-    ];
-  }
+  constructor(public storage: StorageService, private router: Router) {}
 
-  async ngOnInit() {
-    await this.storage.create();
-    this.sensitivityIndex = await this.storage.get('sensitivityIndex');
-  }
+  ngOnInit() {}
 
   calcBolus() {
     if (this.coef && this.carbohydrates) {
-      this.bolus = this.carbohydrates * this.coef / 10;
+      this.bolus = (this.carbohydrates * this.coef) / 10;
     } else {
       this.bolus = undefined;
     }
@@ -47,10 +29,19 @@ export class MainPage implements OnInit {
   }
 
   async calcCorrection() {
-    if (this.bloodSugar && this.sensitivityIndex) {
-      await this.storage.set('sensitivityIndex', this.sensitivityIndex);
+    if (this.bloodSugar && this.storage.sensitivityIndex) {
+      this.storage.set('sensitivityIndex', this.storage.sensitivityIndex);
+      let bloodSugarTarget = 120;
+      let ratio = 100;
+      if (this.storage.bloodGlucoseUnits === 'gl') {
+        bloodSugarTarget = bloodSugarTarget / 100;
+        ratio = 1;
+      }
       if (this.bloodSugar > bloodSugarTarget) {
-        this.correction = ((this.bloodSugar - bloodSugarTarget) / 100) / this.sensitivityIndex;
+        this.correction =
+          (this.bloodSugar - bloodSugarTarget) /
+          ratio /
+          this.storage.sensitivityIndex;
       } else {
         this.correction = 0;
       }
@@ -77,6 +68,6 @@ export class MainPage implements OnInit {
   }
 
   openSettings() {
-    // TODO:
+    this.router.navigate(['/settings']);
   }
 }
