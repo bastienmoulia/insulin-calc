@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage } from '@ionic/storage-angular';
 
 const bloodSugarTarget = 120;
 
@@ -22,7 +23,7 @@ export class MainPage implements OnInit {
   public total: number;
   public meals: Meal[] = [];
 
-  constructor() {
+  constructor(private storage: Storage) {
     this.meals = [
       { name: 'Petit dejeuner', coef: 1 },
       { name: 'Dejeuner', coef: 2 },
@@ -31,7 +32,9 @@ export class MainPage implements OnInit {
     ];
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.storage.create();
+    this.sensitivityIndex = await this.storage.get('sensitivityIndex');
   }
 
   calcBolus() {
@@ -43,8 +46,9 @@ export class MainPage implements OnInit {
     this.calcTotal();
   }
 
-  calcCorrection() {
+  async calcCorrection() {
     if (this.bloodSugar && this.sensitivityIndex) {
+      await this.storage.set('sensitivityIndex', this.sensitivityIndex);
       if (this.bloodSugar > bloodSugarTarget) {
         this.correction = ((this.bloodSugar - bloodSugarTarget) / 100) / this.sensitivityIndex;
       } else {
