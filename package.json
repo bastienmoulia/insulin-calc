@@ -6,8 +6,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "build:ci": "ng build --baseHref=/insulin-calc/",
+    "build": "ng build --configuration=production",
+    "build:ci": "ng build --baseHref=/insulin-calc/ --configuration=production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
