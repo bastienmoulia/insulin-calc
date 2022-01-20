@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Insulin Calc",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
