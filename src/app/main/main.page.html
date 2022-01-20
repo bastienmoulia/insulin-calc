@@ -19,9 +19,10 @@
         <ion-item>
           <ion-label>Coefficient</ion-label>
           <ion-input [(ngModel)]="coef" (ngModelChange)="calcBolus()" type="number"></ion-input>
+          <ion-button id="meal-button">Repas</ion-button>
         </ion-item>
         <ion-text color="primary" *ngIf="bolus >= 0">
-          <h1>{{ bolus }} unités</h1>
+          <h1>{{ bolus | number: '1.0-1' }} unités</h1>
         </ion-text>
       </ion-card-content>
     </ion-card>
@@ -41,7 +42,7 @@
           <ion-input [(ngModel)]="bloodSugar" (ngModelChange)="calcCorrection()" type="number" min="10"></ion-input>
         </ion-item>
         <ion-text color="success" *ngIf="correction >= 0">
-          <h1>{{ correction }} unités</h1>
+          <h1>{{ correction | number: '1.0-1' }} unités</h1>
         </ion-text>
       </ion-card-content>
     </ion-card>
@@ -53,9 +54,26 @@
 
       <ion-card-content>
         <ion-text color="danger">
-          <h1>{{ total }} unités</h1>
+          <h1>{{ total | number: '1.0-1' }} unités</h1>
         </ion-text>
       </ion-card-content>
     </ion-card>
   </div>
 </ion-content>
+
+<ion-popover trigger="meal-button" [dismissOnSelect]="true">
+  <ng-template>
+    <ion-content>
+      <ion-list *ngIf="meals.length > 0">
+        <ion-item button *ngFor="let meal of meals; let i = index" (click)="selectMeal(meal)">
+          <ion-label>
+            {{ meal.name }} ({{ meal.coef }})
+          </ion-label>
+        </ion-item>
+        <ion-list-header>
+          <ion-button (click)="openSettings()">Changer les repas</ion-button>
+        </ion-list-header>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-popover>

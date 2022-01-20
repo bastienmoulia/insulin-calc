@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 const bloodSugarTarget = 120;
 
+interface Meal {
+  name: string;
+  coef: number;
+}
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
@@ -15,21 +20,23 @@ export class MainPage implements OnInit {
   public sensitivityIndex: number;
   public correction: number;
   public total: number;
+  public meals: Meal[] = [];
 
   constructor() {
+    this.meals = [
+      { name: 'Petit dejeuner', coef: 1 },
+      { name: 'Dejeuner', coef: 2 },
+      { name: 'Gouter', coef: 3 },
+      { name: 'Diner', coef: 4 },
+    ];
   }
 
   ngOnInit() {
   }
 
-  openSettings() {
-    console.log('open');
-  }
-
   calcBolus() {
     if (this.coef && this.carbohydrates) {
-      const bolus = this.carbohydrates * this.coef / 10;
-      this.bolus = Math.round(bolus * 10) / 10;
+      this.bolus = this.carbohydrates * this.coef / 10;
     } else {
       this.bolus = undefined;
     }
@@ -39,8 +46,7 @@ export class MainPage implements OnInit {
   calcCorrection() {
     if (this.bloodSugar && this.sensitivityIndex) {
       if (this.bloodSugar > bloodSugarTarget) {
-        const correction = ((this.bloodSugar - bloodSugarTarget) / 100) / this.sensitivityIndex;
-        this.correction = Math.round(correction * 10) / 10;
+        this.correction = ((this.bloodSugar - bloodSugarTarget) / 100) / this.sensitivityIndex;
       } else {
         this.correction = 0;
       }
@@ -53,11 +59,20 @@ export class MainPage implements OnInit {
   calcTotal() {
     if (this.bolus) {
       this.total = this.bolus;
-      if(this.correction) {
+      if (this.correction) {
         this.total += this.correction;
       }
     } else {
       this.total = undefined;
     }
+  }
+
+  selectMeal(meal: Meal) {
+    this.coef = meal.coef;
+    this.calcBolus();
+  }
+
+  openSettings() {
+    // TODO:
   }
 }
