@@ -1,21 +1,61 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title>Calculatrice d'insuline</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-card>
+      <ion-card-header color="primary">
+        <ion-card-title>Bolus</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Glucides (g)</ion-label>
+          <ion-input [(ngModel)]="carbohydrates" (ngModelChange)="calcBolus()" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Coefficient</ion-label>
+          <ion-input [(ngModel)]="coef" (ngModelChange)="calcBolus()" type="number"></ion-input>
+        </ion-item>
+        <ion-text color="primary" *ngIf="bolus >= 0">
+          <h1>{{ bolus }} unités</h1>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header color="success">
+        <ion-card-title>Correction</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Indice de sensibilité</ion-label>
+          <ion-input [(ngModel)]="sensitivityIndex" (ngModelChange)="calcCorrection()" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Glycémie (mg/dL)</ion-label>
+          <ion-input [(ngModel)]="bloodSugar" (ngModelChange)="calcCorrection()" type="number" min="10"></ion-input>
+        </ion-item>
+        <ion-text color="success" *ngIf="correction >= 0">
+          <h1>{{ correction }} unités</h1>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="total >= 0">
+      <ion-card-header color="danger">
+        <ion-card-title>Total</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-text color="danger">
+          <h1>{{ total }} unités</h1>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>
