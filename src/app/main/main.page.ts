@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 const bloodSugarTarget = 120;
 
 @Component({
-  selector: 'app-folder',
-  templateUrl: './folder.page.html',
-  styleUrls: ['./folder.page.scss'],
+  selector: 'app-main',
+  templateUrl: './main.page.html',
+  styleUrls: ['./main.page.scss'],
 })
-export class FolderPage implements OnInit {
+export class MainPage implements OnInit {
   public coef: number;
   public carbohydrates: number;
   public bolus: number;
