@@ -101,16 +101,19 @@ __webpack_require__.r(__webpack_exports__);
 const bloodSugarTarget = 120;
 let MainPage = class MainPage {
     constructor() {
+        this.meals = [];
+        this.meals = [
+            { name: 'Petit dejeuner', coef: 1 },
+            { name: 'Dejeuner', coef: 2 },
+            { name: 'Gouter', coef: 3 },
+            { name: 'Diner', coef: 4 },
+        ];
     }
     ngOnInit() {
     }
-    openSettings() {
-        console.log('open');
-    }
     calcBolus() {
         if (this.coef && this.carbohydrates) {
-            const bolus = this.carbohydrates * this.coef / 10;
-            this.bolus = Math.round(bolus * 10) / 10;
+            this.bolus = this.carbohydrates * this.coef / 10;
         }
         else {
             this.bolus = undefined;
@@ -120,8 +123,7 @@ let MainPage = class MainPage {
     calcCorrection() {
         if (this.bloodSugar && this.sensitivityIndex) {
             if (this.bloodSugar > bloodSugarTarget) {
-                const correction = ((this.bloodSugar - bloodSugarTarget) / 100) / this.sensitivityIndex;
-                this.correction = Math.round(correction * 10) / 10;
+                this.correction = ((this.bloodSugar - bloodSugarTarget) / 100) / this.sensitivityIndex;
             }
             else {
                 this.correction = 0;
@@ -142,6 +144,13 @@ let MainPage = class MainPage {
         else {
             this.total = undefined;
         }
+    }
+    selectMeal(meal) {
+        this.coef = meal.coef;
+        this.calcBolus();
+    }
+    openSettings() {
+        // TODO:
     }
 };
 MainPage.ctorParameters = () => [];
@@ -167,7 +176,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-title>Calculatrice d'insuline</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <div id=\"container\">\n    <ion-card>\n      <ion-card-header color=\"primary\">\n        <ion-card-title>Bolus</ion-card-title>\n      </ion-card-header>\n\n      <ion-card-content>\n        <ion-item>\n          <ion-label>Glucides (g)</ion-label>\n          <ion-input [(ngModel)]=\"carbohydrates\" (ngModelChange)=\"calcBolus()\" type=\"number\"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label>Coefficient</ion-label>\n          <ion-input [(ngModel)]=\"coef\" (ngModelChange)=\"calcBolus()\" type=\"number\"></ion-input>\n        </ion-item>\n        <ion-text color=\"primary\" *ngIf=\"bolus >= 0\">\n          <h1>{{ bolus }} unités</h1>\n        </ion-text>\n      </ion-card-content>\n    </ion-card>\n\n    <ion-card>\n      <ion-card-header color=\"success\">\n        <ion-card-title>Correction</ion-card-title>\n      </ion-card-header>\n\n      <ion-card-content>\n        <ion-item>\n          <ion-label>Indice de sensibilité</ion-label>\n          <ion-input [(ngModel)]=\"sensitivityIndex\" (ngModelChange)=\"calcCorrection()\" type=\"number\"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label>Glycémie (mg/dL)</ion-label>\n          <ion-input [(ngModel)]=\"bloodSugar\" (ngModelChange)=\"calcCorrection()\" type=\"number\" min=\"10\"></ion-input>\n        </ion-item>\n        <ion-text color=\"success\" *ngIf=\"correction >= 0\">\n          <h1>{{ correction }} unités</h1>\n        </ion-text>\n      </ion-card-content>\n    </ion-card>\n\n    <ion-card *ngIf=\"total >= 0\">\n      <ion-card-header color=\"danger\">\n        <ion-card-title>Total</ion-card-title>\n      </ion-card-header>\n\n      <ion-card-content>\n        <ion-text color=\"danger\">\n          <h1>{{ total }} unités</h1>\n        </ion-text>\n      </ion-card-content>\n    </ion-card>\n  </div>\n</ion-content>\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-title>Calculatrice d'insuline</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <div id=\"container\">\n    <ion-card>\n      <ion-card-header color=\"primary\">\n        <ion-card-title>Bolus</ion-card-title>\n      </ion-card-header>\n\n      <ion-card-content>\n        <ion-item>\n          <ion-label>Glucides (g)</ion-label>\n          <ion-input [(ngModel)]=\"carbohydrates\" (ngModelChange)=\"calcBolus()\" type=\"number\"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label>Coefficient</ion-label>\n          <ion-input [(ngModel)]=\"coef\" (ngModelChange)=\"calcBolus()\" type=\"number\"></ion-input>\n          <ion-button id=\"meal-button\">Repas</ion-button>\n        </ion-item>\n        <ion-text color=\"primary\" *ngIf=\"bolus >= 0\">\n          <h1>{{ bolus | number: '1.0-1' }} unités</h1>\n        </ion-text>\n      </ion-card-content>\n    </ion-card>\n\n    <ion-card>\n      <ion-card-header color=\"success\">\n        <ion-card-title>Correction</ion-card-title>\n      </ion-card-header>\n\n      <ion-card-content>\n        <ion-item>\n          <ion-label>Indice de sensibilité</ion-label>\n          <ion-input [(ngModel)]=\"sensitivityIndex\" (ngModelChange)=\"calcCorrection()\" type=\"number\"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label>Glycémie (mg/dL)</ion-label>\n          <ion-input [(ngModel)]=\"bloodSugar\" (ngModelChange)=\"calcCorrection()\" type=\"number\" min=\"10\"></ion-input>\n        </ion-item>\n        <ion-text color=\"success\" *ngIf=\"correction >= 0\">\n          <h1>{{ correction | number: '1.0-1' }} unités</h1>\n        </ion-text>\n      </ion-card-content>\n    </ion-card>\n\n    <ion-card *ngIf=\"total >= 0\">\n      <ion-card-header color=\"danger\">\n        <ion-card-title>Total</ion-card-title>\n      </ion-card-header>\n\n      <ion-card-content>\n        <ion-text color=\"danger\">\n          <h1>{{ total | number: '1.0-1' }} unités</h1>\n        </ion-text>\n      </ion-card-content>\n    </ion-card>\n  </div>\n</ion-content>\n\n<ion-popover trigger=\"meal-button\" [dismissOnSelect]=\"true\">\n  <ng-template>\n    <ion-content>\n      <ion-list *ngIf=\"meals.length > 0\">\n        <ion-item button *ngFor=\"let meal of meals; let i = index\" (click)=\"selectMeal(meal)\">\n          <ion-label>\n            {{ meal.name }} ({{ meal.coef }})\n          </ion-label>\n        </ion-item>\n        <ion-list-header>\n          <ion-button (click)=\"openSettings()\">Changer les repas</ion-button>\n        </ion-list-header>\n      </ion-list>\n    </ion-content>\n  </ng-template>\n</ion-popover>\n");
 
 /***/ }),
 
